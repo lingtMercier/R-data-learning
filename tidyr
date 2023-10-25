@@ -1,27 +1,17 @@
+dfqwe <- tibble(id = 1:3, x = c(m-123-pp, f-455-pl, f-123-po))
 
-my.matrx <- matrix(c(1:10, 11:20, 21:30), nrow = 10, ncol = 3)
-my.matrx
-apply(my.matrx,1,function(x) c(mean(x),sd(x),IQR(x))) #对变量进行多种操作
+dfqwe %>% separate_wider_position(x, c(sex = 1, 1, per = 6))
+# A tibble: 3 × 3
+     id sex   per   
+  <int> <chr> <chr> 
+1     1 m     123-pp
+2     2 f     455-pl
+3     3 f     123-po
 
-A<-c(1:9)
-B<-c(1:12)
-C<-c(1:15)
-my.lst<-list(A,B,C)
-bgn <- lapply(my.lst, sum) #对列表中各元素进行求和
-
-tdata <- as.data.frame(cbind(c(1,1,1,1,1,2,2,2,2,2), my.matrx))
-colnames(tdata)
-tapply(tdata$V2, tdata$V1, mean) #分组求均值
-
-tdata$V5 <- mapply(function(x, y) x/y, tdata$V2, tdata$V4) #对任意两个变量进行操作后得到新列
-tdata$V5
-
-region.info <- tapply(population, state.region, function(x) c(min(x), median(x), max(x)))
-region.info
-
-
-dt <- cars
-avg <- function(x) {( min(x) + max(x) ) / 2}
-
-fcars <- sapply(as.data.frame(state.x77), avg) #等同于apply(state.x77,2,avg)
-fcars
+dfqwe %>% separate_wider_position(x, c(sex = 1, 1, per = 6)) |> separate_wider_position(per,c(dm=1,4,db=1)) #特定位置的切割，中间4代表删除的长度
+# A tibble: 3 × 4
+     id sex   dm    db   
+  <int> <chr> <chr> <chr>
+1     1 m     1     p    
+2     2 f     4     l    
+3     3 f     1     o   
