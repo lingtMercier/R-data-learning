@@ -1,5 +1,7 @@
 # Regularexpression
 
+https://r4ds.had.co.nz/strings.html  #学习stringr
+
 \d 数字0,1,2,3，…,9
 
 \w 单词，指当前区域语言的字母、数字和下划线。如果是中文区域语言，汉字也是单词。
