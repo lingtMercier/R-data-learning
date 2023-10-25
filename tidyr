@@ -1,0 +1,27 @@
+
+my.matrx <- matrix(c(1:10, 11:20, 21:30), nrow = 10, ncol = 3)
+my.matrx
+apply(my.matrx,1,function(x) c(mean(x),sd(x),IQR(x))) #对变量进行多种操作
+
+A<-c(1:9)
+B<-c(1:12)
+C<-c(1:15)
+my.lst<-list(A,B,C)
+bgn <- lapply(my.lst, sum) #对列表中各元素进行求和
+
+tdata <- as.data.frame(cbind(c(1,1,1,1,1,2,2,2,2,2), my.matrx))
+colnames(tdata)
+tapply(tdata$V2, tdata$V1, mean) #分组求均值
+
+tdata$V5 <- mapply(function(x, y) x/y, tdata$V2, tdata$V4) #对任意两个变量进行操作后得到新列
+tdata$V5
+
+region.info <- tapply(population, state.region, function(x) c(min(x), median(x), max(x)))
+region.info
+
+
+dt <- cars
+avg <- function(x) {( min(x) + max(x) ) / 2}
+
+fcars <- sapply(as.data.frame(state.x77), avg) #等同于apply(state.x77,2,avg)
+fcars
